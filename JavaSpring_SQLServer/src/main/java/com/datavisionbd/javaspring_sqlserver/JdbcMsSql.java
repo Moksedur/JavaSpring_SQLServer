@@ -25,11 +25,11 @@ public class JdbcMsSql {
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
             String SQL = "SELECT * FROM NGAC_AUTHLOG";
             ResultSet rs = stmt.executeQuery(SQL);
-System.out.println("In !");
+//System.out.println("In !");
             // Iterate through the data in the result set and display it.
             while (rs.next()) {
-//                System.out.println(rs.getString("UserIDIndex") + " " + rs.getString("TransactionTime"));
-System.out.println("Found !");
+               System.out.println(rs.getString("UserIDIndex") + " " + rs.getString("TransactionTime"));
+//System.out.println("Found !");
             }
         }
         // Handle any errors that may have occurred.

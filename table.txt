@@ -1,0 +1,15 @@
+CREATE TABLE NGAC_AUTHLOG(
+	IndexKey int  NOT NULL PRIMARY KEY,
+	UserIDIndex int NULL,
+	TransactionTime datetime NULL,
+	UserID varchar(30)  NULL,
+	TerminalID int NOT NULL,
+	AuthType int NULL,
+	AuthResult int NULL,
+	FunctionKey int NULL,
+	ServerRecordTime datetime NULL DEFAULT,
+	Reserved int NULL,
+	LogType int NULL,
+	TempValue int NULL,
+	MinIndex int NULL
+	)

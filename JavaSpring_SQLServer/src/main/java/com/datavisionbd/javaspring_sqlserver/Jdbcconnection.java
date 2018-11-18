@@ -7,38 +7,25 @@ package com.datavisionbd.javaspring_sqlserver;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 /**
  *
  * @author Md. Moksedur Rahman
  */
 public class Jdbcconnection {
-    public void dbConnect(String db_connect_string,
-            String db_userid,
-            String db_password)
-   {
-      try {
-         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         Connection conn = DriverManager.getConnection(db_connect_string,
-                  db_userid, db_password);
-         System.out.println("connected");
-         Statement statement = conn.createStatement();
-         String queryString = "select * from sysobjects where type='u'";
-         ResultSet rs = statement.executeQuery(queryString);
-         while (rs.next()) {
-            System.out.println(rs.getString(1));
-         }
-      } catch (Exception e) {
-         e.printStackTrace();
-      }
-   }
-
-   public static void main(String[] args)
-   {
-      ConnectMSSQLServer connServer = new ConnectMSSQLServer();
-      connServer.dbConnect("jdbc:sqlserver://<hostname>", "<user>",
-               "<password>");
-   }
+    public static void main(String[] args) {
+ 
+           Connection con = null;
+           String conUrl = "jdbc:sqlserver://localhost; databaseName=NitgenAccessManager; user=sa; password=sa;";
+ 
+	   try {
+            // ...
+	    con = DriverManager.getConnection(conUrl);
+            System.out.println("Connected !");
+            // ... 
+   	  } catch (Exception e) { e.printStackTrace(); }
+             finally {
+               if (con != null) try { con.close(); } catch(Exception e) {}
+             }
+	}
 }
